@@ -1,17 +1,17 @@
 # nubuild
 
-Abstract away build systems by executing some command based on some definition.
+Abstract away build systems by executing some command based on some definition. (linux only at the moment)
 
 ## Configuration
 
-The configuration is stored in a file named `nubuild.yml` which is stored in `~/.config/nubuild/nubuild.yml` (unknown location for windows and MacOSX) and looks like this:
+The configuration is stored in a file named `nubuild.yml` which is stored in `~/.config/nubuild/nubuild.yml`, and looks like this:
 
 ```yml
 - name: cargo
   file: Cargo.toml
   commands:
-    build: [cargo, --color=always, build]
-    run: [cargo, --color=always,  run]
+    build: [cargo, build]
+    run: [cargo, run]
   separator: --
   default: build
 - name: make
@@ -54,7 +54,7 @@ $ nubuild build
 $ nubuild cargo build
 ```
 
-All those commands are identical and will run `cargo --color=always build`.
+All those commands are identical and will run `cargo build`.
 
 The separator is to avoid having to type it yourself each time.
 

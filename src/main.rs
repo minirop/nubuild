@@ -2,8 +2,7 @@ use dirs::config_dir;
 use serde::Deserialize;
 use std::collections::HashMap;
 use std::fs::File;
-use std::io;
-use std::io::Write;
+use std::os::unix::process::CommandExt;
 use std::path::{Path, PathBuf};
 use std::process;
 
@@ -108,7 +107,6 @@ fn execute_command(command: &Command, mut args: Vec<String>) {
 
     let mut script_command = process::Command::new(executable);
     script_command.args(arguments);
-    let output = script_command.output().expect("Can't run command.");
-    io::stdout().write_all(&output.stdout).unwrap();
-    io::stderr().write_all(&output.stderr).unwrap();
+
+    script_command.exec();
 }

@@ -1,6 +1,6 @@
 # nubuild
 
-Abstract away build systems by executing some command based on some definition. (linux only at the moment)
+Abstracts away build systems by executing some command based on some definition. (linux only at the moment)
 
 ## Configuration
 

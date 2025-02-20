@@ -23,7 +23,11 @@ fn main() {
     if args.len() > 0 && args[0].starts_with("-") {
         match args[0].as_str() {
             "-v" | "-V" | "--version" => {
-                println!("nubuild {}", env!("CARGO_PKG_VERSION"));
+                println!("{} {}", env!("CARGO_BIN_NAME"), env!("CARGO_PKG_VERSION"));
+                return;
+            }
+            "-h" | "--help" => {
+                print_help();
                 return;
             }
             _ => {}
@@ -109,4 +113,16 @@ fn execute_command(command: &Command, mut args: Vec<String>) {
     script_command.args(arguments);
 
     script_command.exec();
+}
+
+fn print_help() {
+    let prog_name = env!("CARGO_BIN_NAME");
+    println!("{}", env!("CARGO_PKG_DESCRIPTION"));
+    println!("");
+    println!("Usage:");
+    println!("  {prog_name} [program] [command] [arguments...]");
+    println!("");
+    println!("Options:");
+    println!("  {prog_name} -h | --help           Show this screen.");
+    println!("  {prog_name} -v | -V | --version   Show version.");
 }

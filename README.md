@@ -12,8 +12,8 @@ The configuration is stored in a file named `nubuild.yml` which is stored in `~/
   commands:
     build: [cargo, build]
     run: [cargo, run]
-  separator: --
   default: build
+  separator: --
 - name: make
   file: Makefile
   commands:
@@ -35,13 +35,13 @@ The file that needs to be detected to match that specific command.
 
 Subcommands that can be called by naming them directly.
 
-### separator
-
-If the command need a separator to accept additional arguments.
-
 ### default
 
 The name of one of the `commands` that is called if none are called directly.
+
+### separator (optional)
+
+If the command need a separator to accept additional arguments.
 
 ## Examples
 
@@ -63,7 +63,7 @@ $ nubuild run test
 $ cargo run -- test # will expands to this
 ```
 
-But you can type it yourself if you need to pass arguments to the command.
+But you can type it yourself if you need to pass arguments to the command (or just don't set that field).
 
 ```console
 $ nubuild run --bin runner -- file.txt

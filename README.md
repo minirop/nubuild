@@ -62,3 +62,10 @@ The separator is to avoid having to type it yourself each time.
 $ nubuild run test
 $ cargo run -- test # will expands to this
 ```
+
+But you can type it yourself if you need to pass arguments to the command.
+
+```console
+$ nubuild run --bin runner -- file.txt
+$ cargo run --bin runner -- file.txt # will expands to this
+```

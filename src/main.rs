@@ -99,7 +99,7 @@ fn execute_command(command: &Command, mut args: Vec<String>) {
     }
 
     if args.len() > 0 {
-        if command.separator.len() > 0 {
+        if command.separator.len() > 0 && !args.contains(&command.separator) {
             arguments.push(command.separator.clone());
         }
         arguments.extend(args);
